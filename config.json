@@ -1,0 +1,7 @@
+{
+  "database": { "host": "", "port": 3306, "user": "", "password": "", "database": "" },
+  "jwtSecret": "",
+  "resendApiKey": "",
+  "emailFrom": "onboarding@resend.dev",
+  "cors": { "origin": "http://localhost:4200", "credentials": true }
+}
