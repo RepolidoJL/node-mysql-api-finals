@@ -5,13 +5,12 @@ import cors from 'cors';
 import errorHandler from './_middleware/error-handler';
 import accountsController from './accounts/accounts.controller';
 import swaggerDocs from './_helpers/swagger';
-const config = require('./config.json');
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
-// allow cors requests from localhost:4200 with credentials
-app.use(cors({ origin: process.env.CORS_ORIGIN || config.cors.origin, credentials: config.cors.credentials }));
+// allow cors requests with credentials (set CORS_ORIGIN env var for production, defaults to http://localhost:4200)
+app.use(cors({ origin: process.env.CORS_ORIGIN || 'http://localhost:4200', credentials: true }));
 // api routes
 app.use('/accounts', accountsController);
 // swagger docs route

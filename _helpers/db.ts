@@ -2,18 +2,17 @@ import mysql from 'mysql2/promise';
 import { Sequelize } from 'sequelize';
 import accountModel from '../accounts/account.model';
 import refreshTokenModel from '../accounts/refresh-token.model';
-const config = require('../config.json');
 
 const db: any = {};
 export default db;
 initialize();
 
 async function initialize() {
-    const host = process.env.DB_HOST || config.database.host || 'localhost';
-    const port = parseInt(process.env.DB_PORT || config.database.port || '3306');
-    const user = process.env.DB_USER || config.database.user || 'root';
-    const password = process.env.DB_PASSWORD || config.database.password || '';
-    const database = process.env.DB_NAME || config.database.database || 'node_mysql_api';
+    const host = process.env.DB_HOST || 'localhost';
+    const port = parseInt(process.env.DB_PORT || '3306');
+    const user = process.env.DB_USER || 'root';
+    const password = process.env.DB_PASSWORD || '';
+    const database = process.env.DB_NAME || 'node_mysql_api';
 
     // Create database if it doesn't exist (use a raw connection, then close it)
     const rawConn = await mysql.createConnection({ host, port, user, password });
